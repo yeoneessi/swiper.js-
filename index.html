@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>캐러셀 연습</title>
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Slick.js -->
+    <link rel="stylesheet" href="slick/slick.css">
+    <script src="slick/slick.js"></script>
+    <!-- AOS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <style>
+        @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+        body{font-family: pretendard;}
+        .myslider{
+            width: 800px;
+            margin: auto;
+        }
+        .myslider div{
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            height: 300px;
+            font-size: 18px;
+            font-weight: 500;
+            color: #343b46;
+            margin-right: 20px;
+        }
+        .myslider > div img{
+            width: 100%;
+        }
+        .fade_in_up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+
+.fade_in_up.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fadein2{
+    font-size: 42px;
+    font-weight: 700;
+    color: #343b46;
+    /* margin: auto; */
+    text-align: center;
+}
+.fadein2 p{
+    font-size: 20px;
+    font-weight: 500;
+    color: #8f9caf;
+    letter-spacing: -0.4px;
+}
+body{
+    font-family: pretendard;
+
+}
+    </style>
+
+</head>
+<body>
+    <div class="fade_in_up">안녕하세요!</div>
+<div class="fade_in_up">콘텐츠가 하나씩 내려와요</div>
+    <div class="myslider">
+        <div>
+            <img src="images/카카오1.jpg" alt="카카오1">
+            <p>서류 5,000건과 면접 500건을 혼자서 관리할 만큼, 효율이 크게 개선됐습니다.</p>
+        </div>
+        <div>Slide Content #02</div>
+        <div>Slide Content #03</div>
+        <div>Slide Content #04</div>
+        <div>Slide Content #05</div>
+        <div>Slide Content #06</div>
+        <div>Slide Content #07</div>
+        <div>Slide Content #08</div>
+        <div>Slide Content #09</div>
+    </div>
+    <div class="fadein2" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
+  가격 정책
+  <p>합리적인 가격으로 여러분들을 모십니다</p>
+</div>
+
+    <script>
+        $('.myslider').slick({
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            autoplay: false,
+            autoplaySpeed: 3000,
+            speed: 500,
+            fade: false,
+            cssEase: 'linear'
+        });
+        const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+    }
+  });
+}, {
+  threshold: 0.1
+});
+
+document.querySelectorAll('.fade_in_up').forEach((el) => observer.observe(el));
+    </script>
+    
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+    AOS.init();
+    </script>
+</body>
+</html>
